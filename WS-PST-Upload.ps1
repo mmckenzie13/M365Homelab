@@ -28,4 +28,5 @@ $BlobSAS = Read-Host -Prompt "Enter in the O365 SAS Token Provided by the Provid
 # Run Script and define location
 $env:USERPROFILE
 $PSTLocation = $env:USERPROFILE +"\Documents\Outlook Files\*"
+$PSTLocation = '"' + $PSTLocation + '"'
 .\azcopy.exe copy '$PSTLocation' $BlobSAS
