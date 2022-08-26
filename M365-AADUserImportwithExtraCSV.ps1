@@ -33,7 +33,7 @@ ForEach ($User in $CSV){
 
 New-AzureADUser -DisplayName $UserDPN -UserPrincipalName $UPN -PasswordProfile $PasswordProfile -AccountEnabled $true -GivenName $UserFN -Surname $UserLN -JobTitle $UserTitle -Department $UserDept -UsageLocation $UserLoc -StreetAddress $UserAdd -State $UserState -Country $UserCountry -PhysicalDeliveryOfficeName $UserOffice -City $UserCity -PostalCode $UserZIP -TelephoneNumber $UserOffPhone -Mobile $UserMobile -MailNickName $UserMailNick
 Set-AzureADUserExtension -Object $UPN -ExtensionName "employeeID" -ExtensionValue $UserEmpID
-#$UserManagerObjID = get-AzureADUser -objectID $UserManager
-#$UserObjID = Get-AzureAdUser -objectID $UserUPN
-#Set-AzureADUserManager -ObjectID $UserObjID.ObjectID -RefObjectID $UserManagerObjId.ObjectID
+$UserManagerObjID = get-AzureADUser -objectID $UserManager
+$UserObjID = Get-AzureAdUser -objectID $UPN
+Set-AzureADUserManager -ObjectID $UserObjID.ObjectID -RefObjectID $UserManagerObjId.ObjectID
 }
