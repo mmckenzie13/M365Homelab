@@ -15,6 +15,7 @@ $TermUserMgr = (get-azureadusermanager –ObjectID $TermUserUPN).objectid
 # Disable User Sign In
 Set-AzureADUser -ObjectID $TermUserUPN -AccountEnabled $false
 Get-AzureADUser -SearchString $TermUserUPN | Revoke-AzureADUserAllRefreshToken
+Set-AzureADUser -objectid $TermUserUPN -Company "InActive"
 
 # Connect to Exchange Online
 Connect-ExchangeOnline -credential $Creds
